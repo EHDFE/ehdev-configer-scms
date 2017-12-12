@@ -5,6 +5,7 @@ const path = require('path');
 const SHELL_NODE_MODULES_PATH = process.env.SHELL_NODE_MODULES_PATH;
 const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 const HtmlWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'html-webpack-plugin'));
+const ManifestPlugin = require('webpack-manifest-plugin');
 const autoprefixer = require('autoprefixer');
 
 const {
@@ -173,6 +174,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
   plugins.push(
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),
+    new ManifestPlugin(),
   );
   if (PROJECT_CONFIG.enableHotModuleReplacement) {
     plugins.push(

@@ -28,7 +28,7 @@ exports.getDevConfig = async (PROJECT_CONFIG, options) => {
 exports.getProdConfig = async (PROJECT_CONFIG, options) => {
   try {
     const baseConfig = await _getBaseConfig(PROJECT_CONFIG, options);
-    const prodConfig = await _getDevConfig(PROJECT_CONFIG, options);
+    const prodConfig = await _getProdConfig(PROJECT_CONFIG, options);
     return merge.smartStrategy(MERGE_STRATEGY)(baseConfig, prodConfig);
   } catch(e) {
     throw Error(e);
