@@ -1,6 +1,6 @@
 {
   "name": "ehdev-configer-scms",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "jarvis config for scms",
   "main": "index.js",
   "scripts": {
