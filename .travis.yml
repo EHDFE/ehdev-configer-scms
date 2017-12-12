@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: npm
+  email: macisi528@gmail.com
+  api_key:
+    secure: k3UYQ2pQ64Ng+Q77OBXveJyb2bG+JMm79UdDE2+I8Wv3fWBpWaOyRBme4X0gzfOhRXFWWokGhIpCnBGX7NCXFHB5wxFiZarPgWybbm153ka8ragMwUfbgJt0XX09IQfW9mfxEXod5BmsWL+NPH/EcxtGssEaUiJEFtcnRSjrVruQTVQX6jpDv8IMZtWlvnR0BhJYVFCaCTCHCcexOBgYWjJM5O7xrWSu8xbRBlzCJZzUqVHWitHAv3JLINhg97DU0U5jnKHLzAXBdCXbR6Npjd3nvZFuXosKJ7j/fCHpwCYeVdp3OaXOG9XonFFIQjxX1jNKpQ+eU007qFPpz6a3oDpmzByy2k8xTFTRZdcsUPCTOKAJSn8uAprVnSc2HQ/eRA9UaA+08MSkgzmiuYwxCCPv/b+BSJzOb6arNVVtIJY2ZYoQ7GQRMxEK6XezrHqulRJhyw1iGjSpLUGG+wxzahesxJ8yfFtikZnEpdX8CN0Td4TXC8gVJHrXY0b8KToGLazagXKyajAwX6e2lEzI7BjEB1iqVs9QdukV/dIAYzwNsMeG+8KoFpaAEAR+JAQTcOia+09ijJhCcfOpjWATi5xc8mMe/PZt3J/KF0syUAfNFvXlio+nCrkDdmrRyKuU8/C6qZe3LmeDxPqWM5xEF17AHJoDih+s0qjbhAMi9U8=
+  on:
+    tags: true
+    repo: EHDFE/ehdev-configer-scms

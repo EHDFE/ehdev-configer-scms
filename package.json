@@ -1,0 +1,55 @@
+{
+  "name": "ehdev-configer-scms",
+  "version": "0.0.0",
+  "description": "jarvis config for scms",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "jarvis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHDFE/ehdev-configer-scms.git"
+  },
+  "author": "ryan.bian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EHDFE/ehdev-configer-scms/issues"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.2.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "postcss-loader": "^2.0.9",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack-merge": "^4.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "clean-webpack-plugin": "^0.1.17",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "mocha": "^4.0.1",
+    "webpack": "^3.8.1"
+  },
+  "files": [
+    "src",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 8.1.0"
+  }
+}
