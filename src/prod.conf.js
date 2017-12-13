@@ -14,6 +14,9 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const {
   PROJECT_ROOT,
   SOURCE_DIR,
+  getExternals,
+  getHtmlLoaderConfig,
+  getLoaderOptionPlugin,
 } = require('./lib');
 const PUBLIC_PATH = '/';
 
@@ -120,18 +123,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
               ],
             }),
           },
-          {
-            test: /\.html?$/,
-            use: [
-              {
-                loader: require.resolve('html-loader'),
-                options: {
-                  interpolate: true,
-                  root: './',
-                },
-              },
-            ],
-          },
+          getHtmlLoaderConfig(PROJECT_CONFIG),
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
@@ -157,7 +149,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     alias: PROJECT_CONFIG.alias,
   };
 
-  const externals = Object.assign({}, PROJECT_CONFIG.externals);
+  const externals = getExternals(PROJECT_CONFIG);
 
   const plugins = [
     new CleanWebpackPlugin([
@@ -173,6 +165,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
       filename: '[name].[contenthash:8].css',
     }),
     new ManifestPlugin(),
+    getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
   if (!PROJECT_CONFIG.ignoreHtmlTemplate) {
     PROJECT_CONFIG.htmlList.forEach(d => {
