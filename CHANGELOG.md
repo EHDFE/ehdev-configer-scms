@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.0.3
+---
+FEATURE:
+  - support dynamic publicPath setting in devlopment mode
+
+BUGFIX:
+  - fix the conflict with angular template express by changing posthtml's delimiters.
+
 ## v0.0.2
 ---
 FEATURE:

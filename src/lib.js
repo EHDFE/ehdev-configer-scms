@@ -51,7 +51,9 @@ exports.getLoaderOptionPlugin = PROJECT_CONFIG => new webpack.LoaderOptionsPlugi
           require('posthtml-expressions')({
             locals:{
               env: process.env.NODE_ENV, 
-            }
+            },
+            // defaults delimiters: {{}} is conflicted with angular expression
+            delimiters: ['<%', '%>'],
           })
         ],
       };
