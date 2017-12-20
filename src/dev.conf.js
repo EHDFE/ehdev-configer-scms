@@ -91,6 +91,15 @@ module.exports = async (PROJECT_CONFIG, options) => {
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
         oneOf: [
+          {
+            resourceQuery: {
+              include: /\?asFile/,
+            },
+            loader: require.resolve('file-loader'),
+            options: {
+              name: '[name].[hash:8].[ext]',
+            },
+          },
           // "url" loader works like "file" loader except that it embeds assets
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.

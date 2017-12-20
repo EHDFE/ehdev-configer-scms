@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.4
+---
+FEATURE:
+  - support import anything by file-loader by add query '?asFile'
+
 ## v0.0.3
 ---
 FEATURE:
