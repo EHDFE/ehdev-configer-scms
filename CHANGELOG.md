@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.5
+---
+BUFIX:
+  - minimize css in production build
+
 ## v0.0.4
 ---
 FEATURE:

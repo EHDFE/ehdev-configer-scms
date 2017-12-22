@@ -29,7 +29,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
 
   if (PROJECT_CONFIG.enableHotModuleReplacement) {
     const devServerEntry = [
-      `${require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack-dev-server')}/client`)}?http://localhost:${options.port}`,
+      `${require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack-dev-server')}/client`)}?http://${options.ip ? options.ip : 'localhost'}:${options.port}`,
       require.resolve(`${path.join(SHELL_NODE_MODULES_PATH, 'webpack')}/hot/dev-server`),
     ];
     Object.keys(entry).forEach(name => {

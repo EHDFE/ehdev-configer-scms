@@ -110,7 +110,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
                   loader: require.resolve('css-loader'),
                   options: {
                     importLoaders: 1,
-                    minimize: false,
+                    minimize: true,
                   },
                 },
                 {
@@ -121,7 +121,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
                     ident: 'postcss',
                     plugins: () => [
                       autoprefixer({
-                        browsers: PROJECT_CONFIG.browserSupports.DEVELOPMENT,
+                        browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
                       }),
                     ],
                   },
