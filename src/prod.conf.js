@@ -184,7 +184,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
           template: d.template,
           files: d.files,
           chunks: d.chunks,
-        }, PROJECT_CONFIG.HtmlWebpackPlugin)),
+        }, PROJECT_CONFIG.htmlWebpackPlugin)),
       );
     });
   }

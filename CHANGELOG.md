@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.6
+---
+BUFIX:
+  - change projectConfig `HtmlWebpackPlugin` to `htmlWebpackPlugin`
+
 ## v0.0.5
 ---
 BUFIX:
