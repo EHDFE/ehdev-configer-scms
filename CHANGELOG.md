@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.7
+---
+BUFIX:
+  - remove 'webpack-chunk-hash' plugin
+
 ## v0.0.6
 ---
 BUFIX:

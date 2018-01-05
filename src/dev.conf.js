@@ -97,7 +97,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
             },
             loader: require.resolve('file-loader'),
             options: {
-              name: '[name].[hash:8].[ext]',
+              name: '[name].[ext]',
             },
           },
           // "url" loader works like "file" loader except that it embeds assets
@@ -108,7 +108,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: '[name].[hash:8].[ext]',
+              name: '[name].[ext]',
             },
           },
           // Process JS with Babel.
@@ -159,7 +159,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
             exclude: [/\.jsx?$/, /\.json$/],
             loader: require.resolve('file-loader'),
             options: {
-              name: '[name].[hash:8].[ext]',
+              name: '[name].[ext]',
             },
           },
         ],

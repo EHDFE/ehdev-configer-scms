@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'html-webpa
 const ExtractTextPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'extract-text-webpack-plugin'));
 const CleanWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'clean-webpack-plugin'));
 const autoprefixer = require('autoprefixer');
-const WebpackChunkHash = require('webpack-chunk-hash');
+// const WebpackChunkHash = require('webpack-chunk-hash');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const {
@@ -168,8 +168,10 @@ module.exports = async (PROJECT_CONFIG, options) => {
       verbose: true,
       dry: false,
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HashedModuleIdsPlugin(),
-    new WebpackChunkHash(),
+    // https://github.com/alexindigo/webpack-chunk-hash/issues/2
+    // new WebpackChunkHash(),
     new ExtractTextPlugin({
       filename: '[name].[contenthash:8].css',
     }),
