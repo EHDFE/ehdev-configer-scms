@@ -19,9 +19,9 @@ const {
 module.exports = async (PROJECT_CONFIG, options) => {
 
   let PUBLIC_PATH = '/';
-  if (options.ip) {
-    PUBLIC_PATH = `${PROJECT_CONFIG.https ? 'https' : 'http'}://${options.ip}:${options.port}/`;
-  }
+  // if (options.ip) {
+  //   PUBLIC_PATH = `${PROJECT_CONFIG.https ? 'https' : 'http'}://${options.ip}:${options.port}/`;
+  // }
 
   const configResult = {};
 
