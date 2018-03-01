@@ -17,6 +17,8 @@ const {
   getExternals,
   getHtmlLoaderConfig,
   getLoaderOptionPlugin,
+  // getWorkboxPluginConfig,
+  // getCopyWebpackPluginConfig,
 } = require('./lib');
 const PUBLIC_PATH = '/';
 
@@ -26,8 +28,9 @@ module.exports = async (PROJECT_CONFIG, options) => {
 
   const entry = PROJECT_CONFIG.entryList;
 
+  const distPath = path.join(PROJECT_ROOT, PROJECT_CONFIG.buildPath);
   const output = {
-    path: path.join(PROJECT_ROOT, PROJECT_CONFIG.buildPath),
+    path: distPath,
     filename: '[name].[chunkhash:8].js',
     publicPath: PROJECT_CONFIG.publicPath || PUBLIC_PATH,
   };
@@ -190,6 +193,11 @@ module.exports = async (PROJECT_CONFIG, options) => {
       );
     });
   }
+
+  // plugins.push(
+  //   getWorkboxPluginConfig(distPath),
+  //   getCopyWebpackPluginConfig(distPath, 'prod'),
+  // );
 
   Object.assign(configResult, {
     // Don't attempt to continue if there are any errors.

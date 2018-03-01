@@ -6,6 +6,8 @@ const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 
 const PROJECT_ROOT = exports.PROJECT_ROOT = process.cwd();
 const SOURCE_DIR = exports.SOURCE_DIR = path.join(PROJECT_ROOT, 'src');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 exports.getExternals = PROJECT_CONFIG => {
   let externals = Object.assign({}, PROJECT_CONFIG.externals);
@@ -59,4 +61,26 @@ exports.getLoaderOptionPlugin = PROJECT_CONFIG => new webpack.LoaderOptionsPlugi
       };
     }
   },
+});
+
+// exports.getWorkboxPluginConfig = distPath => new WorkboxPlugin({
+//   globDirectory: distPath,
+//   globPatterns: ['*'],
+//   swSrc: './src/enhancer/sw.js',
+//   swDest: path.join(distPath, 'sw.js'),
+// });
+
+exports.getCopyWebpackPluginConfig = (distPath, env) => new CopyWebpackPlugin([
+  // {
+  //   from: `../node_modules/workbox-sw/build/workbox-sw.js`,
+  //   to: path.join(distPath, 'workbox-sw.js'),
+  //   flatten: true,
+  //   toType: 'file',
+  // },
+  // {
+  //   from: './enhancer/sw.js',
+  //   to: distPath,
+  // },
+], {
+  debug: 'warn',
 });

@@ -14,14 +14,16 @@ const {
   getExternals,
   getHtmlLoaderConfig,
   getLoaderOptionPlugin,
+  // getWorkboxPluginConfig,
+  // getCopyWebpackPluginConfig,
 } = require('./lib');
 
 module.exports = async (PROJECT_CONFIG, options) => {
 
   let PUBLIC_PATH = '/';
-  // if (options.ip) {
-  //   PUBLIC_PATH = `${PROJECT_CONFIG.https ? 'https' : 'http'}://${options.ip}:${options.port}/`;
-  // }
+  if (options.ip) {
+    PUBLIC_PATH = `${PROJECT_CONFIG.https ? 'https' : 'http'}://${options.ip}:${options.port}/`;
+  }
 
   const configResult = {};
 
@@ -45,8 +47,11 @@ module.exports = async (PROJECT_CONFIG, options) => {
     });
   }
 
+  const distPath = path.join(PROJECT_ROOT, PROJECT_CONFIG.buildPath);
+
   const output = {
-    path: path.join(PROJECT_ROOT, PROJECT_CONFIG.buildPath),
+    path: distPath,
+    // filename: '[name].[hash:8].js',
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
     publicPath: PUBLIC_PATH,
@@ -197,6 +202,11 @@ module.exports = async (PROJECT_CONFIG, options) => {
       );
     });
   }
+
+  // plugins.push(
+    // getWorkboxPluginConfig(distPath),
+    // getCopyWebpackPluginConfig(distPath, 'dev'),
+  // );
 
   Object.assign(configResult, {
     entry,
