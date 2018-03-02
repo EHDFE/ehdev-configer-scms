@@ -13,7 +13,7 @@ const {
   SOURCE_DIR,
   getExternals,
   getHtmlLoaderConfig,
-  getLoaderOptionPlugin,
+  // getLoaderOptionPlugin,
   // getWorkboxPluginConfig,
   // getCopyWebpackPluginConfig,
 } = require('./lib');
@@ -179,10 +179,8 @@ module.exports = async (PROJECT_CONFIG, options) => {
   const externals = getExternals(PROJECT_CONFIG);
 
   const plugins = [
-    // Add module names to factory functions so they appear in browser profiler.
-    new webpack.NamedModulesPlugin(),
     new ManifestPlugin(),
-    getLoaderOptionPlugin(PROJECT_CONFIG),
+    // getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
   if (PROJECT_CONFIG.enableHotModuleReplacement) {
     plugins.push(
