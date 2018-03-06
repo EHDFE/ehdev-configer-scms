@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## v0.1.0
+---
+FEATURE:
+  - supports webpack v4
+  - deps upgrade:
+    - autoprefixer: `^7.2.1` to `^8.1.0`
+    - copy-webpack-plugin: `^4.4.2` to `^4.5.0`
+    - less: `^2.7.3` to `^3.0.1`
+    - postcss-loader: `^2.0.9` to `^2.1.1`
+    - posthtml-loader: `^0.11.0` to `^1.0.1`
+    - url-loader: `^0.6.2` to `^1.0.0`
+    - webpack-manifest-plugin: `^1.3.2` to `^2.0.0-rc.2`
+
 ## v0.0.7
 ---
 BUFIX:
