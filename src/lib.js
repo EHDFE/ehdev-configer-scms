@@ -6,7 +6,6 @@ const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 
 const PROJECT_ROOT = exports.PROJECT_ROOT = process.cwd();
 const SOURCE_DIR = exports.SOURCE_DIR = path.join(PROJECT_ROOT, 'src');
-// const WorkboxPlugin = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 exports.getExternals = PROJECT_CONFIG => {
