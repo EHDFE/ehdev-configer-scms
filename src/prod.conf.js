@@ -131,6 +131,9 @@ module.exports = async (PROJECT_CONFIG, options) => {
                 },
                 {
                   loader: require.resolve('less-loader'),
+                  options: {
+                    strictMath: true,
+                  },
                 },
               ],
             }),

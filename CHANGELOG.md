@@ -1,18 +1,23 @@
 # CHANGELOG
 
+## v0.0.10
+---
+BUGFIX:
+  - less: add strictMath: true
+
 ## v0.0.7
 ---
-BUFIX:
+BUGFIX:
   - remove 'webpack-chunk-hash' plugin
 
 ## v0.0.6
 ---
-BUFIX:
+BUGFIX:
   - change projectConfig `HtmlWebpackPlugin` to `htmlWebpackPlugin`
 
 ## v0.0.5
 ---
-BUFIX:
+BUGFIX:
   - minimize css in production build
 
 ## v0.0.4
