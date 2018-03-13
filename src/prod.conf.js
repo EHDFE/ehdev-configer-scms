@@ -16,7 +16,7 @@ const {
   SOURCE_DIR,
   getExternals,
   getHtmlLoaderConfig,
-  getLoaderOptionPlugin,
+  // getLoaderOptionPlugin,
   // getWorkboxPluginConfig,
   // getCopyWebpackPluginConfig,
 } = require('./lib');
@@ -174,7 +174,6 @@ module.exports = async (PROJECT_CONFIG, options) => {
       verbose: true,
       dry: false,
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     // https://github.com/alexindigo/webpack-chunk-hash/issues/2
     // new WebpackChunkHash(),
@@ -182,7 +181,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
       filename: '[name].[contenthash:8].css',
     }),
     new ManifestPlugin(),
-    getLoaderOptionPlugin(PROJECT_CONFIG),
+    // getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
   if (!PROJECT_CONFIG.ignoreHtmlTemplate) {
     PROJECT_CONFIG.htmlList.forEach(d => {
