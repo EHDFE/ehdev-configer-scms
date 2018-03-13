@@ -1,10 +1,14 @@
 # CHANGELOG
 
+## v0.1.2
+---
+BUGFIX:
+  - disable mangle in production uglify build
+
 ## v0.1.1
 ---
 BUGFIX:
   - fix the issue that extract css failed in async loaded chunks.
-
 
 ## v0.1.0
 ---

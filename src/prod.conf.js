@@ -7,6 +7,7 @@ const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 const HtmlWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'html-webpack-plugin'));
 const ExtractTextPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'extract-text-webpack-plugin'));
 const CleanWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'clean-webpack-plugin'));
+const UglifyJsPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'uglifyjs-webpack-plugin'));
 const autoprefixer = require('autoprefixer');
 // const WebpackChunkHash = require('webpack-chunk-hash');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -112,7 +113,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
                 {
                   loader: require.resolve('css-loader'),
                   options: {
-                    importLoaders: 1,
+                    importLoaders: 2,
                     minimize: true,
                   },
                 },
@@ -212,6 +213,16 @@ module.exports = async (PROJECT_CONFIG, options) => {
     externals,
     plugins,
     devtool: 'source-map',
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          sourceMap: true,
+          uglifyOptions: {
+            mangle: false,
+          },
+        }),
+      ],
+    },
   });
 
   return configResult;
