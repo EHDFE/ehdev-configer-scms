@@ -182,7 +182,13 @@ module.exports = async (PROJECT_CONFIG, options) => {
   const externals = getExternals(PROJECT_CONFIG);
 
   const plugins = [
-    new ManifestPlugin(),
+    new ManifestPlugin({
+      map(asset) {
+        return Object.assign(asset, {
+          path: asset.path.replace(output.publicPath, ''),
+        });
+      },
+    }),
     // getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
   if (PROJECT_CONFIG.enableHotModuleReplacement) {

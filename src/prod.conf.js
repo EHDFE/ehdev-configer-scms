@@ -182,7 +182,13 @@ module.exports = async (PROJECT_CONFIG, options) => {
       filename: '[name].[contenthash:8].css',
       allChunks: true,
     }),
-    new ManifestPlugin(),
+    new ManifestPlugin({
+      map(asset) {
+        return Object.assign(asset, {
+          path: asset.path.replace(output.publicPath, ''),
+        });
+      },
+    }),
     // getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
   if (!PROJECT_CONFIG.ignoreHtmlTemplate) {

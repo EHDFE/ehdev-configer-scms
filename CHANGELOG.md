@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.3
+---
+CHANGE:
+  - remove publishPath in manifest's path
+
 ## v0.1.2
 ---
 BUGFIX:
