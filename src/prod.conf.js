@@ -179,6 +179,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     // new WebpackChunkHash(),
     new ExtractTextPlugin({
       filename: '[name].[contenthash:8].css',
+      allChunks: true,
     }),
     new ManifestPlugin(),
     // getLoaderOptionPlugin(PROJECT_CONFIG),
