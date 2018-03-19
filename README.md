@@ -29,3 +29,4 @@
 | https | false | 开发环境的 https 支持 |
 | publicPath | `../` | `webpackConfig.output.publicPath`, 只在构建时生效 |
 | contentBase | undefined | 配置 devServer 的 [contentBase](https://webpack.js.org/configuration/dev-server/#devserver-contentbase)，默认包含当前项目的输出目录，不需要配置 |
+| extractTextFromAllChunks | false | 从所有 `chunk` 抽取 css，默认只从初始 chunk 抽取，忽略其它异步chunk |

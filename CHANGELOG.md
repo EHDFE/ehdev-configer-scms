@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.4
+---
+CHANGE:
+  - add config for allChunk in extactTextPlugin.
+
+
 ## v0.1.3
 ---
 CHANGE:

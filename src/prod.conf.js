@@ -180,7 +180,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     // new WebpackChunkHash(),
     new ExtractTextPlugin({
       filename: '[name].[contenthash:8].css',
-      allChunks: true,
+      allChunks: PROJECT_CONFIG.extractTextFromAllChunks,
     }),
     new ManifestPlugin({
       map(asset) {

@@ -36,4 +36,5 @@ module.exports = {
   publicPath: '../',
   // outputJsonpFunction
   // contentBase
+  extractTextFromAllChunks: false,
 };
