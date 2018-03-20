@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.5
+---
+CHANGE:
+  - add `legacy-dynamic-import-plugin` for supports dynamic import commonjs code directly.
+
 ## v0.1.4
 ---
 CHANGE:

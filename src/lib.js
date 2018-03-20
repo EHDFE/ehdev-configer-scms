@@ -7,6 +7,14 @@ const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 const PROJECT_ROOT = exports.PROJECT_ROOT = process.cwd();
 const SOURCE_DIR = exports.SOURCE_DIR = path.join(PROJECT_ROOT, 'src');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const LegacyDynamicImportPlugin = require('legacy-dynamic-import-plugin');
+
+exports.addPlugins = PROJECT_CONFIG => {
+  const legacyImportList = Object.values(PROJECT_CONFIG.externalModulesMap);
+  return [
+    new LegacyDynamicImportPlugin(legacyImportList)
+  ];
+}
 
 exports.getExternals = PROJECT_CONFIG => {
   let externals = Object.assign({}, PROJECT_CONFIG.externals);

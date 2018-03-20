@@ -17,6 +17,7 @@ const {
   SOURCE_DIR,
   getExternals,
   getHtmlLoaderConfig,
+  addPlugins,
   // getLoaderOptionPlugin,
   // getWorkboxPluginConfig,
   // getCopyWebpackPluginConfig,
@@ -191,6 +192,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     }),
     // getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
+  plugins.concat(addPlugins(PROJECT_CONFIG));
   if (!PROJECT_CONFIG.ignoreHtmlTemplate) {
     PROJECT_CONFIG.htmlList.forEach(d => {
       plugins.push(
