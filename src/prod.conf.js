@@ -191,8 +191,8 @@ module.exports = async (PROJECT_CONFIG, options) => {
       },
     }),
     // getLoaderOptionPlugin(PROJECT_CONFIG),
+    ...addPlugins(PROJECT_CONFIG),
   ];
-  plugins.concat(addPlugins(PROJECT_CONFIG));
   if (!PROJECT_CONFIG.ignoreHtmlTemplate) {
     PROJECT_CONFIG.htmlList.forEach(d => {
       plugins.push(

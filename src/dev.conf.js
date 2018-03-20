@@ -190,9 +190,9 @@ module.exports = async (PROJECT_CONFIG, options) => {
         });
       },
     }),
+    ...addPlugins(PROJECT_CONFIG),
     // getLoaderOptionPlugin(PROJECT_CONFIG),
   ];
-  plugins.concat(addPlugins(PROJECT_CONFIG));
   if (PROJECT_CONFIG.enableHotModuleReplacement) {
     plugins.push(
       // This is necessary to emit hot updates (currently CSS only):
