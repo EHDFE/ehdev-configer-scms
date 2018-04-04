@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.7
+---
+CHANGE:
+  - use [mini-css-extract-plugin] (https://github.com/webpack-contrib/mini-css-extract-plugin) to extract css in production mode.
+> ⚠️ Must be used with Jarvis@0.4.3 or above.
+
 ## v0.1.5
 ---
 CHANGE:

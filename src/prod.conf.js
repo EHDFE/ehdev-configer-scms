@@ -5,12 +5,13 @@ const path = require('path');
 const SHELL_NODE_MODULES_PATH = process.env.SHELL_NODE_MODULES_PATH;
 const webpack = require(path.join(SHELL_NODE_MODULES_PATH, 'webpack'));
 const HtmlWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'html-webpack-plugin'));
-const ExtractTextPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'extract-text-webpack-plugin'));
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'clean-webpack-plugin'));
 const UglifyJsPlugin = require(path.join(SHELL_NODE_MODULES_PATH, 'uglifyjs-webpack-plugin'));
 const autoprefixer = require('autoprefixer');
 // const WebpackChunkHash = require('webpack-chunk-hash');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const {
   PROJECT_ROOT,
@@ -103,42 +104,35 @@ module.exports = async (PROJECT_CONFIG, options) => {
           }, babelLoaderConfig),
           {
             test: /\.(le|c)ss$/,
-            loader: ExtractTextPlugin.extract({
-              fallback: {
-                loader: require.resolve('style-loader'),
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: require.resolve('css-loader'),
                 options: {
-                  hmr: false,
+                  importLoaders: 2,
+                  minimize: true,
                 },
               },
-              use: [
-                {
-                  loader: require.resolve('css-loader'),
-                  options: {
-                    importLoaders: 2,
-                    minimize: true,
-                  },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  // https://github.com/facebookincubator/create-react-app/issues/2677
+                  ident: 'postcss',
+                  plugins: () => [
+                    autoprefixer({
+                      browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
+                    }),
+                  ],
                 },
-                {
-                  loader: require.resolve('postcss-loader'),
-                  options: {
-                    // Necessary for external CSS imports to work
-                    // https://github.com/facebookincubator/create-react-app/issues/2677
-                    ident: 'postcss',
-                    plugins: () => [
-                      autoprefixer({
-                        browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
-                      }),
-                    ],
-                  },
+              },
+              {
+                loader: require.resolve('less-loader'),
+                options: {
+                  strictMath: true,
                 },
-                {
-                  loader: require.resolve('less-loader'),
-                  options: {
-                    strictMath: true,
-                  },
-                },
-              ],
-            }),
+              },
+            ],
           },
           getHtmlLoaderConfig(PROJECT_CONFIG),
           // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -179,9 +173,8 @@ module.exports = async (PROJECT_CONFIG, options) => {
     new webpack.HashedModuleIdsPlugin(),
     // https://github.com/alexindigo/webpack-chunk-hash/issues/2
     // new WebpackChunkHash(),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
-      allChunks: PROJECT_CONFIG.extractTextFromAllChunks,
     }),
     new ManifestPlugin({
       map(asset) {
@@ -229,6 +222,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
             mangle: false,
           },
         }),
+        new OptimizeCssAssetsPlugin({}),
       ],
     },
   });
