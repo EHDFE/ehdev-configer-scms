@@ -1,6 +1,11 @@
 # CHANGELOG
 
-## v0.1.7
+## v0.1.9
+---
+BUGFIX:
+  - disable z-index optimize in OptimizeCssAssetsPlugin.
+
+## v0.1.8
 ---
 CHANGE:
   - use [mini-css-extract-plugin] (https://github.com/webpack-contrib/mini-css-extract-plugin) to extract css in production mode.

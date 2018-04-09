@@ -222,7 +222,12 @@ module.exports = async (PROJECT_CONFIG, options) => {
             mangle: false,
           },
         }),
-        new OptimizeCssAssetsPlugin({}),
+        new OptimizeCssAssetsPlugin({
+          cssProcessorOptions: {
+            zindex: false,
+            autoprefixer: false,
+          },
+        }),
       ],
     },
   });
