@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.10
+---
+PERFORMANCE:
+  - use `happypack` to boost up compilation speed.
+  - enable multiple thread in uglify config.
+
 ## v0.1.9
 ---
 BUGFIX:

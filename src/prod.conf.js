@@ -12,6 +12,7 @@ const autoprefixer = require('autoprefixer');
 // const WebpackChunkHash = require('webpack-chunk-hash');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HappyPack = require('happypack');
 
 const {
   PROJECT_ROOT,
@@ -44,29 +45,43 @@ module.exports = async (PROJECT_CONFIG, options) => {
     });
   }
 
-  const babelLoaderConfig = {
-    loader: require.resolve('babel-loader'),
-    options: {
-      // @remove-on-eject-begin
-      babelrc: false,
-      presets: [
-        [
-          require.resolve('babel-preset-env'),
-          {
-            targets: {
-              browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
-            }, 
-            module: false,
-            useBuiltIns: PROJECT_CONFIG.babelUseBuiltIns,
+  const happyPackPluginList = [
+    new HappyPack({
+      id: 'babel',
+      loaders: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            // @remove-on-eject-begin
+            babelrc: false,
+            presets: [
+              [
+                require.resolve('babel-preset-env'),
+                {
+                  targets: {
+                    browsers: PROJECT_CONFIG.browserSupports.PRODUCTION,
+                  }, 
+                  module: false,
+                  useBuiltIns: PROJECT_CONFIG.babelUseBuiltIns,
+                }
+              ],
+              require.resolve('babel-preset-stage-1'),
+            ],
+            // @remove-on-eject-end
+            // This is a feature of `babel-loader` for webpack (not Babel itself).
+            // It enables caching results in ./node_modules/.cache/babel-loader/
+            // directory for faster rebuilds.
+            cacheDirectory: true,
           }
-        ],
-        require.resolve('babel-preset-stage-1'),
+        }
       ],
-      // @remove-on-eject-end
-      // This is a feature of `babel-loader` for webpack (not Babel itself).
-      // It enables caching results in ./node_modules/.cache/babel-loader/
-      // directory for faster rebuilds.
-      cacheDirectory: true,
+    })
+  ];
+
+  const babelLoaderConfig = {
+    loader: require.resolve('happypack/loader'),
+    options: {
+      id: 'babel',
     },
   }
 
@@ -170,6 +185,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
       verbose: true,
       dry: false,
     }),
+    ...happyPackPluginList,
     new webpack.HashedModuleIdsPlugin(),
     // https://github.com/alexindigo/webpack-chunk-hash/issues/2
     // new WebpackChunkHash(),
@@ -217,7 +233,9 @@ module.exports = async (PROJECT_CONFIG, options) => {
     optimization: {
       minimizer: [
         new UglifyJsPlugin({
+          cache: true,
           sourceMap: true,
+          parallel: true,
           uglifyOptions: {
             mangle: false,
           },

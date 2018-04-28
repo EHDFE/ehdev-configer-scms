@@ -29,6 +29,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
+    "happypack": "^5.0.0",
     "html-loader": "^0.5.5",
     "legacy-dynamic-import-plugin": "^1.0.0",
     "less": "^3.0.1",
@@ -41,9 +42,9 @@
     "raw-loader": "^0.5.1",
     "style-loader": "^0.20.0",
     "url-loader": "^1.0.0",
+    "webpack": "^4.5.0",
     "webpack-manifest-plugin": "^2.0.0-rc.2",
-    "webpack-merge": "^4.1.2",
-    "webpack": "^4.5.0"
+    "webpack-merge": "^4.1.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
