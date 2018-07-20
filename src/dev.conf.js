@@ -130,7 +130,6 @@ module.exports = async (PROJECT_CONFIG, options) => {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
-                  minimize: false,
                 },
               },
               {
@@ -229,7 +228,7 @@ module.exports = async (PROJECT_CONFIG, options) => {
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
     performance: {
-      hints: false,
+      hints: 'warning',
     },
   });
 

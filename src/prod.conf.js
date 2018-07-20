@@ -125,7 +125,6 @@ module.exports = async (PROJECT_CONFIG, options) => {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 2,
-                  minimize: true,
                 },
               },
               {
